@@ -1,0 +1,169 @@
+
+.import-history-page {
+  padding: 20px;
+  width: 100%;
+  min-width: 0;
+}
+
+.import-history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.import-history-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+
+.import-history-header p {
+  color: #777;
+  font-size: 13px;
+  margin: 0;
+}
+
+.import-history-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.history-summary-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px;
+}
+
+.history-summary-card span {
+  display: block;
+  color: #6b7280;
+  font-size: 13px;
+  margin-bottom: 8px;
+}
+
+.history-summary-card h3 {
+  font-size: 26px;
+  font-weight: 700;
+  margin: 0;
+  color: #1f2937;
+}
+
+.history-summary-card.success h3 {
+  color: #15803d;
+}
+
+.history-summary-card.failed h3 {
+  color: #dc2626;
+}
+
+.import-history-filters {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  max-width: 500px;
+}
+
+.import-history-filters select {
+  min-width: 180px;
+  font-size: 13px;
+}
+
+.import-history-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+}
+
+.import-history-table-wrapper table {
+  margin-bottom: 0;
+  min-width: 1150px;
+  font-size: 12px;
+}
+
+.import-history-table-wrapper thead th {
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  white-space: nowrap;
+  padding: 13px 12px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.import-history-table-wrapper tbody td {
+  padding: 12px;
+  white-space: nowrap;
+  color: #374151;
+}
+
+.history-trigger {
+  text-transform: capitalize;
+  color: #475569;
+  background: #f1f5f9;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-size: 11px;
+}
+
+.history-status {
+  display: inline-block;
+  text-transform: capitalize;
+  font-size: 11px;
+  font-weight: 600;
+  padding: 5px 9px;
+  border-radius: 20px;
+}
+
+.status-success {
+  color: #15803d;
+  background: #dcfce7;
+}
+
+.status-failed {
+  color: #b91c1c;
+  background: #fee2e2;
+}
+
+.history-error {
+  max-width: 220px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.import-history-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  font-size: 13px;
+  color: #64748b;
+}
+
+@media (max-width: 768px) {
+  .import-history-page {
+    padding: 12px;
+  }
+
+  .import-history-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .import-history-header {
+    align-items: flex-start;
+  }
+
+  .import-history-filters {
+    max-width: 100%;
+    flex-direction: column;
+  }
+
+  .import-history-filters select {
+    width: 100%;
+  }
+}

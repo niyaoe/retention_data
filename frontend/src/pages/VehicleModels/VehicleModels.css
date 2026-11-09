@@ -1,0 +1,238 @@
+.vehicle-models-page {
+  width: 100%;
+  min-width: 0;
+  padding: 20px;
+}
+
+.vehicle-models-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.vehicle-models-header h2 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 5px;
+  color: #1f2937;
+}
+
+.vehicle-models-header p {
+  font-size: 13px;
+  color: #777;
+  margin: 0;
+}
+
+.vehicle-models-import-card {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 20px;
+}
+
+.vehicle-models-import-card h5 {
+  font-size: 15px;
+  font-weight: 650;
+  margin-bottom: 5px;
+}
+
+.vehicle-models-import-card p {
+  color: #777;
+  font-size: 12px;
+  margin-bottom: 14px;
+}
+
+.vehicle-models-import-card form {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.vehicle-models-import-card input[type="file"] {
+  max-width: 400px;
+  font-size: 13px;
+}
+
+.vehicle-models-import-result {
+  margin-top: 15px;
+  padding: 13px;
+  border-radius: 7px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+  font-size: 13px;
+}
+
+.vehicle-models-import-metrics {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 18px;
+  margin-top: 10px;
+}
+
+.vehicle-models-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 15px;
+}
+
+.vehicle-models-toolbar input {
+  max-width: 420px;
+  font-size: 13px;
+}
+
+.vehicle-models-toolbar span {
+  margin-left: auto;
+  white-space: nowrap;
+  font-size: 13px;
+  color: #64748b;
+}
+
+.vehicle-models-table-wrapper {
+  width: 100%;
+  max-height: calc(100vh - 390px);
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.vehicle-models-table-wrapper table {
+  margin: 0;
+  font-size: 11px;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.vehicle-models-table-wrapper thead th {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: #f8fafc;
+  color: #475569;
+  font-weight: 600;
+  font-size: 11px;
+  white-space: nowrap;
+  padding: 7px 10px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.vehicle-models-table-wrapper tbody td {
+  padding: 5px 10px;
+  font-size: 11px;
+  line-height: 1.3;
+  color: #374151;
+  white-space: nowrap;
+}
+
+.vehicle-models-table-wrapper tbody tr {
+  height: 32px;
+}
+
+.vehicle-models-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 18px;
+  color: #64748b;
+  font-size: 13px;
+}
+
+/* Modal */
+
+.vehicle-models-modal-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1050;
+  background: rgba(15, 23, 42, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+}
+
+.vehicle-models-modal {
+  width: 100%;
+  max-width: 480px;
+  background: #fff;
+  border-radius: 12px;
+  padding: 22px;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.15);
+  max-height: 90vh;
+  overflow-y: auto;
+}
+
+.vehicle-models-modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.vehicle-models-modal-header h5 {
+  font-size: 17px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.vehicle-models-modal-header button {
+  border: none;
+  background: transparent;
+  font-size: 26px;
+  color: #64748b;
+  cursor: pointer;
+  line-height: 1;
+}
+
+.vehicle-models-modal .form-label {
+  font-size: 13px;
+  font-weight: 600;
+  color: #475569;
+}
+
+.vehicle-models-modal .form-control {
+  font-size: 13px;
+}
+
+.vehicle-models-modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 25px;
+}
+
+@media (max-width: 768px) {
+  .vehicle-models-page {
+    padding: 12px;
+  }
+
+  .vehicle-models-header {
+    align-items: flex-start;
+  }
+
+  .vehicle-models-import-card form {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .vehicle-models-import-card input[type="file"] {
+    max-width: 100%;
+  }
+
+  .vehicle-models-toolbar {
+    flex-wrap: wrap;
+  }
+
+  .vehicle-models-toolbar input {
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .vehicle-models-toolbar span {
+    margin-left: 0;
+  }
+}

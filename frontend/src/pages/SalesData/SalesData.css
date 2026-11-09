@@ -1,0 +1,34 @@
+.ret-sales-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.ret-sales-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.ret-sales-header h2 {
+  margin: 0;
+  color: #202a3a;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.ret-sales-header p {
+  margin: 5px 0 0;
+  color: #8490a1;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .ret-sales-header {
+    margin-bottom: 14px;
+  }
+
+  .ret-sales-header h2 {
+    font-size: 19px;
+  }
+}

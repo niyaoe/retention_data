@@ -1,0 +1,180 @@
+
+.ret-login-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  background: linear-gradient(135deg, #eef2ff, #f8fafc);
+}
+
+.ret-login-card {
+  width: 100%;
+  max-width: 430px;
+  padding: 38px;
+  background: #ffffff;
+  border: 1px solid #e8ebf0;
+  border-radius: 16px;
+  box-shadow: 0 15px 45px rgba(15, 23, 42, 0.08);
+}
+
+.ret-login-brand {
+  text-align: center;
+  margin-bottom: 35px;
+}
+
+.ret-login-logo {
+  width: 55px;
+  height: 55px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 14px;
+  border-radius: 14px;
+  background: #243b80;
+  color: #ffffff;
+  font-size: 25px;
+}
+
+.ret-login-brand h2 {
+  margin: 0;
+  color: #172554;
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.ret-login-brand p {
+  margin: 6px 0 0;
+  color: #8490a3;
+  font-size: 13px;
+}
+
+.ret-login-heading {
+  margin-bottom: 24px;
+}
+
+.ret-login-heading h3 {
+  margin: 0 0 7px;
+  color: #202938;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.ret-login-heading p {
+  margin: 0;
+  color: #7b8494;
+  font-size: 13px;
+}
+
+.ret-login-field {
+  margin-bottom: 19px;
+}
+
+.ret-login-field label {
+  display: block;
+  margin-bottom: 8px;
+  color: #374151;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.ret-login-input-wrap {
+  height: 48px;
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 0 14px;
+  border: 1px solid #dce1e9;
+  border-radius: 8px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.ret-login-input-wrap:focus-within {
+  border-color: #334d9b;
+  box-shadow: 0 0 0 3px rgba(51, 77, 155, 0.1);
+}
+
+.ret-login-input-wrap > i {
+  color: #8791a2;
+  font-size: 17px;
+}
+
+.ret-login-input-wrap input {
+  width: 100%;
+  min-width: 0;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: #202938;
+  font-size: 14px;
+}
+
+.ret-login-password-toggle {
+  border: none;
+  background: transparent;
+  color: #7b8494;
+  cursor: pointer;
+}
+
+.ret-login-submit {
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 26px;
+  border: none;
+  border-radius: 8px;
+  background: #243b80;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.ret-login-submit:hover:not(:disabled) {
+  background: #192d68;
+}
+
+.ret-login-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.ret-login-error {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  padding: 11px 13px;
+  border: 1px solid #fecaca;
+  border-radius: 7px;
+  background: #fef2f2;
+  color: #b91c1c;
+  font-size: 13px;
+}
+
+.ret-login-footer {
+  margin-top: 30px;
+  padding-top: 18px;
+  border-top: 1px solid #edf0f4;
+  color: #9aa2af;
+  text-align: center;
+  font-size: 11px;
+}
+
+@media (max-width: 480px) {
+  .ret-login-page {
+    padding: 15px;
+  }
+
+  .ret-login-card {
+    padding: 28px 22px;
+  }
+
+  .ret-login-brand h2 {
+    font-size: 21px;
+  }
+}

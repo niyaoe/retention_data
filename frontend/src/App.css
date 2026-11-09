@@ -1,0 +1,26 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Inter", "Segoe UI", sans-serif;
+  background: #f5f6f8;
+  color: #20242c;
+}
+
+button,
+input,
+select,
+textarea {
+  font-family: inherit;
+}
+
+a {
+  text-decoration: none;
+}
+
+#root {
+  min-height: 100vh;
+}

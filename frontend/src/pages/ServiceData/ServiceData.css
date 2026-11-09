@@ -1,0 +1,34 @@
+.ret-service-page {
+  width: 100%;
+  min-width: 0;
+}
+
+.ret-service-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.ret-service-header h2 {
+  margin: 0;
+  color: #202a3a;
+  font-size: 21px;
+  font-weight: 700;
+}
+
+.ret-service-header p {
+  margin: 5px 0 0;
+  color: #8490a1;
+  font-size: 12px;
+}
+
+@media (max-width: 600px) {
+  .ret-service-header {
+    margin-bottom: 14px;
+  }
+
+  .ret-service-header h2 {
+    font-size: 19px;
+  }
+}

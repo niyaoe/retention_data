@@ -1,0 +1,156 @@
+
+.ret-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 255px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background: #ffffff;
+  border-right: 1px solid #e9edf2;
+  transition: transform 0.3s ease;
+}
+
+.ret-sidebar-brand {
+  height: 78px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 22px;
+  border-bottom: 1px solid #edf0f4;
+}
+
+.ret-sidebar-logo {
+  width: 39px;
+  height: 39px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
+  background: #243b80;
+  color: white;
+  font-size: 19px;
+}
+
+.ret-sidebar-brand h4 {
+  margin: 0;
+  color: #172554;
+  font-size: 16px;
+  font-weight: 700;
+}
+
+.ret-sidebar-brand span {
+  color: #929aaa;
+  font-size: 10px;
+}
+
+.ret-sidebar-menu {
+  flex: 1;
+  overflow-y: auto;
+  padding: 22px 13px;
+}
+
+.ret-sidebar-section-title {
+  margin: 0 0 12px 10px;
+  color: #a0a8b6;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+
+.ret-sidebar-link {
+  min-height: 43px;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  margin-bottom: 5px;
+  padding: 0 13px;
+  border-radius: 7px;
+  color: #626d7e;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.ret-sidebar-link i {
+  font-size: 17px;
+}
+
+.ret-sidebar-link:hover {
+  background: #f2f5fb;
+  color: #243b80;
+}
+
+.ret-sidebar-link.active {
+  background: #eaf0ff;
+  color: #243b80;
+  font-weight: 600;
+}
+
+.ret-sidebar-admin-title {
+  margin-top: 30px;
+}
+
+.ret-sidebar-user {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 17px;
+  border-top: 1px solid #edf0f4;
+}
+
+.ret-sidebar-avatar {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: #eaf0ff;
+  color: #243b80;
+  font-weight: 700;
+}
+
+.ret-sidebar-user-info {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.ret-sidebar-user-info strong {
+  overflow: hidden;
+  color: #303a49;
+  font-size: 12px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.ret-sidebar-user-info span {
+  color: #929aaa;
+  font-size: 11px;
+  text-transform: capitalize;
+}
+
+.ret-sidebar-overlay {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .ret-sidebar {
+    transform: translateX(-100%);
+  }
+
+  .ret-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .ret-sidebar-overlay.show {
+    position: fixed;
+    inset: 0;
+    z-index: 999;
+    display: block;
+    background: rgba(15, 23, 42, 0.4);
+  }
+}

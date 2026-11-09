@@ -1,0 +1,656 @@
+.ret-manual-page {
+  padding: 24px;
+}
+
+.ret-manual-header {
+  margin-bottom: 25px;
+}
+
+.ret-manual-header h4 {
+  font-size: 21px;
+  font-weight: 700;
+  color: #202938;
+  margin-bottom: 6px;
+}
+
+.ret-manual-header p {
+  color: #7b8493;
+  font-size: 13px;
+  margin: 0;
+}
+
+.ret-manual-cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.ret-manual-card {
+  background: #fff;
+  border: 1px solid #e8ebf0;
+  border-radius: 12px;
+  padding: 24px;
+  min-width: 0;
+}
+
+.ret-manual-card-icon {
+  width: 46px;
+  height: 46px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 21px;
+  margin-bottom: 18px;
+}
+
+.ret-manual-sales-icon {
+  background: #eaf2ff;
+  color: #2563eb;
+}
+
+.ret-manual-dms-icon {
+  background: #e9f8f0;
+  color: #15945a;
+}
+
+.ret-manual-card h5 {
+  color: #202938;
+  font-size: 17px;
+  font-weight: 700;
+  margin-bottom: 9px;
+}
+
+.ret-manual-card > p {
+  color: #7b8493;
+  font-size: 13px;
+  line-height: 1.6;
+  min-height: 42px;
+  margin-bottom: 22px;
+}
+
+.ret-manual-button {
+  width: 100%;
+  min-height: 42px;
+  border: none;
+  border-radius: 7px;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  transition: 0.2s ease;
+}
+
+.ret-manual-button:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.ret-manual-sales-button {
+  background: #2563eb;
+}
+
+.ret-manual-sales-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.ret-manual-dms-button {
+  background: #15945a;
+}
+
+.ret-manual-dms-button:hover:not(:disabled) {
+  background: #117847;
+}
+
+.ret-manual-result {
+  margin-top: 18px;
+  padding: 14px;
+  background: #f5f9f6;
+  border: 1px solid #dceee1;
+  border-radius: 8px;
+}
+
+.ret-manual-result-heading {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #16834e;
+  font-size: 12px;
+  font-weight: 600;
+  margin-bottom: 13px;
+}
+
+.ret-manual-result-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.ret-manual-result-grid div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.ret-manual-result-grid span {
+  color: #788477;
+  font-size: 11px;
+}
+
+.ret-manual-result-grid strong {
+  color: #26352b;
+  font-size: 17px;
+}
+
+.ret-manual-error {
+  margin-top: 14px;
+  padding: 11px;
+  border-radius: 7px;
+  background: #fff1f1;
+  color: #c52d2d;
+  font-size: 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 768px) {
+  .ret-manual-page {
+    padding: 16px;
+  }
+
+  .ret-manual-cards {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+
+/* SERVICE IMPORT */
+
+.ret-manual-service-icon {
+  background: #e8f0ff;
+  color: #2563eb;
+}
+
+.ret-manual-service-upload {
+  margin: 18px 0;
+}
+
+.ret-manual-service-upload label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.ret-manual-service-upload input {
+  width: 100%;
+  font-size: 13px;
+  padding: 10px;
+  border: 1px dashed #b8c2d1;
+  border-radius: 7px;
+  background: #f8fafc;
+}
+
+.ret-manual-file-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 9px 12px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.ret-manual-file-name i {
+  color: #16a34a;
+}
+
+.ret-manual-service-button {
+  background: #2563eb;
+  color: #fff;
+}
+
+.ret-manual-service-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.ret-manual-sheet-select {
+  margin-top: 18px;
+}
+
+.ret-manual-sheet-select label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+
+.ret-manual-sheet-select select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: #fff;
+  font-size: 13px;
+}
+
+.ret-manual-service-preview {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #e5e7eb;
+  min-width: 0;
+}
+
+.ret-manual-preview-heading {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ret-manual-preview-heading i {
+  color: #2563eb;
+}
+
+.ret-manual-preview-info {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ret-manual-preview-info div {
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+.ret-manual-preview-info span,
+.ret-manual-preview-info strong {
+  display: block;
+}
+
+.ret-manual-preview-info span {
+  color: #64748b;
+  font-size: 11px;
+  margin-bottom: 4px;
+}
+
+.ret-manual-preview-info strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.ret-manual-preview-table-wrapper {
+  width: 100%;
+  max-height: 350px;
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.ret-manual-preview-table-wrapper table {
+  width: max-content;
+  min-width: 100%;
+  margin-bottom: 0;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.ret-manual-preview-table-wrapper th {
+  position: sticky;
+  top: 0;
+  background: #f1f5f9;
+  z-index: 1;
+}
+
+.ret-manual-preview-table-wrapper th,
+.ret-manual-preview-table-wrapper td {
+  padding: 7px 10px;
+}
+
+.ret-manual-preview-note {
+  font-size: 11px;
+  color: #64748b;
+  margin: 10px 0 15px;
+}
+
+.ret-manual-service-import-button {
+  background: #15803d;
+  color: #fff;
+  width: 100%;
+}
+
+.ret-manual-service-import-button:hover:not(:disabled) {
+  background: #166534;
+}
+
+.ret-manual-total {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #64748b;
+}
+
+@media (max-width: 576px) {
+  .ret-manual-preview-info {
+    grid-template-columns: 1fr;
+  }
+
+  .ret-manual-preview-table-wrapper {
+    max-height: 280px;
+  }
+}
+
+
+
+
+/* =====================================
+   MANUAL IMPORT SECTIONS
+===================================== */
+
+.ret-manual-section {
+  margin-top: 28px;
+}
+
+.ret-manual-section-heading {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.ret-manual-section-heading i {
+  font-size: 19px;
+  color: #64748b;
+}
+
+.ret-manual-section-heading h5 {
+  font-size: 16px;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* =====================================
+   EXCEL UPLOAD
+===================================== */
+
+.ret-excel-card {
+  min-width: 0;
+}
+
+.ret-excel-upload {
+  margin: 18px 0;
+}
+
+.ret-excel-upload label,
+.ret-excel-sheet label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.ret-excel-upload input {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px dashed #b8c2d1;
+  border-radius: 7px;
+  background: #f8fafc;
+}
+
+.ret-excel-file-name {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 10px;
+  padding: 10px;
+  background: #f1f5f9;
+  border-radius: 7px;
+  font-size: 12px;
+  overflow-wrap: anywhere;
+}
+
+.ret-excel-file-name i {
+  color: #16a34a;
+}
+
+.ret-excel-preview-button {
+  background: #2563eb;
+  color: white;
+}
+
+.ret-excel-preview-button:hover:not(:disabled) {
+  background: #1d4ed8;
+}
+
+.ret-excel-sheet {
+  margin-top: 18px;
+}
+
+.ret-excel-sheet select {
+  width: 100%;
+  padding: 10px;
+  font-size: 13px;
+  border: 1px solid #d1d5db;
+  border-radius: 7px;
+  background: white;
+}
+
+/* =====================================
+   EXCEL PREVIEW
+===================================== */
+
+.ret-excel-preview {
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid #e5e7eb;
+  min-width: 0;
+}
+
+.ret-excel-preview-title {
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.ret-excel-preview-title i {
+  color: #2563eb;
+}
+
+.ret-excel-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 14px;
+}
+
+.ret-excel-summary div {
+  padding: 10px;
+  background: #f8fafc;
+  border-radius: 6px;
+  min-width: 0;
+}
+
+.ret-excel-summary span,
+.ret-excel-summary strong {
+  display: block;
+}
+
+.ret-excel-summary span {
+  font-size: 11px;
+  color: #64748b;
+  margin-bottom: 4px;
+}
+
+.ret-excel-summary strong {
+  font-size: 13px;
+  overflow-wrap: anywhere;
+}
+
+.ret-excel-table-wrapper {
+  width: 100%;
+  max-height: 350px;
+  overflow: auto;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+
+.ret-excel-table-wrapper table {
+  width: max-content;
+  min-width: 100%;
+  margin-bottom: 0;
+  font-size: 11px;
+  white-space: nowrap;
+}
+
+.ret-excel-table-wrapper th {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background: #f1f5f9;
+}
+
+.ret-excel-table-wrapper th,
+.ret-excel-table-wrapper td {
+  padding: 7px 10px;
+}
+
+.ret-excel-preview-note {
+  font-size: 11px;
+  color: #64748b;
+  margin: 10px 0 15px;
+}
+
+.ret-excel-import-button {
+  background: #15803d;
+  color: white;
+  width: 100%;
+}
+
+.ret-excel-import-button:hover:not(:disabled) {
+  background: #166534;
+}
+
+/* =====================================
+   IMPORT REPORT
+===================================== */
+
+.ret-import-report {
+  margin-top: 20px;
+  padding: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 9px;
+  min-width: 0;
+}
+
+.ret-import-report-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.ret-import-report-label {
+  display: block;
+  color: #64748b;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+
+.ret-import-report-header h6 {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.ret-import-success {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #15803d;
+  font-size: 11px;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.ret-import-report-message {
+  margin: 10px 0 14px;
+  color: #64748b;
+  font-size: 12px;
+}
+
+.ret-import-report-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.ret-import-report-metric {
+  padding: 11px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 7px;
+  min-width: 0;
+}
+
+.ret-import-report-metric div {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #64748b;
+  font-size: 11px;
+  margin-bottom: 8px;
+}
+
+.ret-import-report-metric strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 700;
+  color: #1e293b;
+  overflow-wrap: anywhere;
+}
+
+.ret-import-report-footer {
+  margin-top: 10px;
+  font-size: 11px;
+  color: #64748b;
+  overflow-wrap: anywhere;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media (max-width: 576px) {
+  .ret-excel-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .ret-import-report-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .ret-import-report {
+    padding: 12px;
+  }
+}

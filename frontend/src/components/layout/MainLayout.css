@@ -1,0 +1,23 @@
+
+.ret-main-layout {
+  min-height: 100vh;
+}
+
+.ret-main-content {
+  min-height: 100vh;
+  margin-left: 255px;
+}
+
+.ret-page-content {
+  padding: 25px;
+}
+
+@media (max-width: 768px) {
+  .ret-main-content {
+    margin-left: 0;
+  }
+
+  .ret-page-content {
+    padding: 16px;
+  }
+}

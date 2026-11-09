@@ -1,0 +1,189 @@
+
+.branch-management {
+  width: 100%;
+  padding: 20px;
+  color: #212529;
+}
+
+.branch-page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 22px;
+}
+
+.branch-page-header h3 {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0 0 5px;
+}
+
+.branch-page-header p {
+  color: #6c757d;
+  font-size: 13px;
+  margin: 0;
+}
+
+.branch-header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.branch-header-actions .btn {
+  font-size: 13px;
+  padding: 9px 15px;
+  font-weight: 500;
+}
+
+.branch-filter-card {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px;
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  margin-bottom: 18px;
+}
+
+.branch-search {
+  position: relative;
+  flex: 1;
+  max-width: 450px;
+}
+
+.branch-search i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #8a929a;
+  z-index: 1;
+}
+
+.branch-search input {
+  height: 38px;
+  padding-left: 36px;
+  font-size: 13px;
+}
+
+.branch-status-filter {
+  width: 170px;
+  height: 38px;
+  font-size: 13px;
+}
+
+.branch-total {
+  margin-left: auto;
+  font-size: 13px;
+  color: #6c757d;
+}
+
+.branch-total strong {
+  color: #212529;
+}
+
+.branch-table-card {
+  background: #fff;
+  border: 1px solid #e9ecef;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.branch-table {
+  min-width: 950px;
+  font-size: 13px;
+}
+
+.branch-table thead th {
+  background: #f8f9fa;
+  color: #626b75;
+  font-weight: 600;
+  font-size: 12px;
+  white-space: nowrap;
+  padding: 13px 14px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.branch-table tbody td {
+  padding: 12px 14px;
+  border-bottom: 1px solid #f0f1f2;
+  white-space: nowrap;
+}
+
+.branch-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.branch-table tbody tr:hover {
+  background: #fafbfc;
+}
+
+.branch-status {
+  display: inline-block;
+  padding: 4px 9px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.branch-status.active {
+  color: #198754;
+  background: #e8f5ee;
+}
+
+.branch-status.inactive {
+  color: #dc3545;
+  background: #fcebed;
+}
+
+.branch-pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 13px 16px;
+  border-top: 1px solid #e9ecef;
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.branch-pagination .btn {
+  font-size: 12px;
+}
+
+@media (max-width: 768px) {
+  .branch-management {
+    padding: 12px;
+  }
+
+  .branch-page-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .branch-header-actions {
+    width: 100%;
+  }
+
+  .branch-header-actions .btn {
+    flex: 1;
+  }
+
+  .branch-filter-card {
+    flex-wrap: wrap;
+  }
+
+  .branch-search {
+    max-width: 100%;
+    flex-basis: 100%;
+  }
+
+  .branch-status-filter {
+    flex: 1;
+  }
+
+  .branch-total {
+    margin-left: 0;
+  }
+}
