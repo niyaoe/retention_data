@@ -1,5 +1,6 @@
 const XLSX = require("xlsx");
 const SalesData = require("../models/SalesData");
+const Branch = require("../models/Branch");
 
 const CHUNK_SIZE = 1000;
 
@@ -17,6 +18,42 @@ const cleanText = (value) => {
 
   return String(value).trim();
 };
+
+
+const normalizeDealerCode = (value) =>
+  String(value || "").trim().toUpperCase();
+
+const getBranchMap = async (dealerCodes) => {
+  const codes = [
+    ...new Set(
+      dealerCodes
+        .map(normalizeDealerCode)
+        .filter(Boolean)
+    ),
+  ];
+
+  if (!codes.length) return new Map();
+
+  const branches = await Branch.find({
+    dCode: { $in: codes },
+    isActive: true,
+  })
+    .select("_id dCode branchName")
+    .lean();
+
+  const branchMap = new Map();
+
+  branches.forEach((branch) => {
+    const code = normalizeDealerCode(branch.dCode);
+
+    if (code && !branchMap.has(code)) {
+      branchMap.set(code, branch);
+    }
+  });
+
+  return branchMap;
+};
+
 
 const toDate = (value) => {
   if (!value) return null;
@@ -130,8 +167,12 @@ const importSalesData = async (req, res) => {
   try {
     const { rows, sheetName } = getSalesExcelRows(req);
 
-    const uniqueRecords = new Map();
+    // Build branch lookup once for the entire Excel import
+    const branchMap = await getBranchMap(
+      rows.map((row) => row["Dealer_Location_Code"])
+    );
 
+    const uniqueRecords = new Map();
     let skippedCount = 0;
     let duplicateRows = 0;
 
@@ -149,6 +190,21 @@ const importSalesData = async (req, res) => {
 
       // Start with chassis number only.
       const record = { chassisNumber };
+
+      // Map Dealer_Location_Code to Branch MongoDB reference
+      const dealerCode = normalizeDealerCode(
+        row["Dealer_Location_Code"]
+      );
+
+      if (dealerCode) {
+        record.dealerLocationCode = dealerCode;
+
+        const matchedBranch = branchMap.get(dealerCode);
+
+        record.branch = matchedBranch
+          ? matchedBranch._id
+          : null;
+      }
 
       // Add only fields that have actual values.
       const stringFields = {
@@ -346,6 +402,7 @@ const importSalesFromUrl = async (req, res) => {
     const headers = rows[0].map((header) => String(header).trim());
 
     const requiredHeaders = [
+      "Dealer_Location_Code",
       "Delivery_Date",
       "Chassis_No",
       "Registration_Number",
@@ -376,6 +433,17 @@ const importSalesFromUrl = async (req, res) => {
 
     const getValue = (row, header) => row[headerIndex[header]];
 
+    // Build branch lookup using Dealer_Location_Code
+    const dealerCodeIndex = headerIndex["Dealer_Location_Code"];
+
+    const branchMap = await getBranchMap(
+      rows.slice(1).map((row) =>
+        dealerCodeIndex !== undefined
+          ? row[dealerCodeIndex]
+          : null
+      )
+    );
+
     const uniqueRecords = new Map();
 
     let skippedCount = 0;
@@ -397,6 +465,21 @@ const importSalesFromUrl = async (req, res) => {
 
       // Only update fields containing actual CSV values.
       const record = { chassisNumber };
+
+      // Map dealer location code to Branch
+      const dealerCode = normalizeDealerCode(
+        getValue(row, "Dealer_Location_Code")
+      );
+
+      if (dealerCode) {
+        record.dealerLocationCode = dealerCode;
+
+        const matchedBranch = branchMap.get(dealerCode);
+
+        record.branch = matchedBranch
+          ? matchedBranch._id
+          : null;
+      }
 
       const stringFields = {
         registrationNumber: "Registration_Number",
@@ -538,8 +621,145 @@ const importSalesFromUrl = async (req, res) => {
   }
 };
 
+
+
+const migrateExistingSalesBranches = async (req, res) => {
+  try {
+    // Include inactive branches for historical records.
+    const branches = await Branch.find({})
+      .select("_id branchName dmsName")
+      .lean();
+
+    const branchMap = new Map();
+    const ambiguousNames = new Set();
+
+    const normalizeBranchName = (value) =>
+      String(value || "")
+        .trim()
+        .replace(/\s+/g, " ")
+        .toUpperCase();
+
+    // Add branch names and alternate DMS names.
+    const addToLookup = (value, branch) => {
+      const name = normalizeBranchName(value);
+
+      if (!name || ambiguousNames.has(name)) return;
+
+      const existingId = branchMap.get(name);
+
+      if (existingId && existingId.toString() !== branch._id.toString()) {
+        branchMap.delete(name);
+        ambiguousNames.add(name);
+        return;
+      }
+
+      branchMap.set(name, branch._id);
+    };
+
+    branches.forEach((branch) => {
+      addToLookup(branch.branchName, branch);
+      addToLookup(branch.dmsName, branch);
+
+      // Confirmed historical Sales alias.
+      if (
+        normalizeBranchName(branch.branchName) === "PALAKKAD"
+      ) {
+        addToLookup("PALAKKAD - SR", branch);
+      }
+    });
+
+    const cursor = SalesData.find({
+      branch: null,
+      saleBranch: { $nin: [null, ""] },
+    })
+      .select("_id saleBranch")
+      .lean()
+      .cursor({ batchSize: CHUNK_SIZE });
+
+    let scannedCount = 0;
+    let mappedCount = 0;
+    let unmatchedCount = 0;
+    let ambiguousCount = 0;
+
+    const unmatchedNames = new Set();
+    const ambiguousBranchNames = new Set();
+
+    let operations = [];
+
+    for await (const sale of cursor) {
+      scannedCount++;
+
+      const name = normalizeBranchName(sale.saleBranch);
+
+      if (ambiguousNames.has(name)) {
+        ambiguousCount++;
+        ambiguousBranchNames.add(sale.saleBranch);
+        continue;
+      }
+
+      const branchId = branchMap.get(name);
+
+      if (!branchId) {
+        unmatchedCount++;
+        unmatchedNames.add(sale.saleBranch);
+        continue;
+      }
+
+      operations.push({
+        updateOne: {
+          filter: {
+            _id: sale._id,
+            branch: null,
+          },
+          update: {
+            $set: {
+              branch: branchId,
+            },
+          },
+        },
+      });
+
+      mappedCount++;
+
+      if (operations.length >= CHUNK_SIZE) {
+        await SalesData.bulkWrite(operations, {
+          ordered: false,
+        });
+
+        operations = [];
+      }
+    }
+
+    if (operations.length > 0) {
+      await SalesData.bulkWrite(operations, {
+        ordered: false,
+      });
+    }
+
+    return res.json({
+      message: "Historical Sales branch migration completed",
+      scannedCount,
+      mappedCount,
+      unmatchedCount,
+      ambiguousCount,
+      unmatchedBranchNames: [...unmatchedNames],
+      ambiguousBranchNames: [...ambiguousBranchNames],
+    });
+  } catch (error) {
+    console.error("Sales branch migration error:", error);
+
+    return res.status(500).json({
+      message: "Historical branch migration failed",
+      error: error.message,
+    });
+  }
+};
+
+
+
 module.exports = {
   previewSalesExcel,
   importSalesData,
   importSalesFromUrl,
+  migrateExistingSalesBranches,
 };

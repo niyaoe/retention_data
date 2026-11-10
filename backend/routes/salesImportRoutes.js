@@ -7,9 +7,13 @@ const {
   previewSalesExcel,
   importSalesData,
   importSalesFromUrl,
+  migrateExistingSalesBranches,
 } = require("../controllers/salesImportController");
 
 const { protect } = require("../middleware/authMiddleware");
+
+const { authorize } = require("../middleware/roleMiddleware");
+
 
 router.use(protect);
 
@@ -31,6 +35,13 @@ router.post(
 router.post(
   "/sales-url",
   importSalesFromUrl
+);
+
+// Historical Sales branch migration (Admin only)
+router.post(
+  "/sales/migrate-branches",
+  authorize("admin"),
+  migrateExistingSalesBranches
 );
 
 module.exports = router;
