@@ -41,13 +41,18 @@ const SalesData = () => {
 
         const result = response.data;
 
-        setData(result.data || []);
+        const formattedData = (result.data || []).map((record) => ({
+          ...record,
+          saleBranch:
+            record.branchDetails?.branchName || record.saleBranch || "-",
+        }));
+
+        setData(formattedData);
         setTotal(result.total || 0);
         setTotalPages(result.totalPages || 1);
       } catch (err) {
         setError(
-          err.response?.data?.message ||
-            "Unable to load sales records."
+          err.response?.data?.message || "Unable to load sales records.",
         );
       } finally {
         setLoading(false);
@@ -67,61 +72,61 @@ const SalesData = () => {
     return date.toLocaleDateString("en-IN");
   };
 
- const columns = [
-  {
-    key: "deliveryDate",
-    label: "Delivery Date",
-    render: (value) => formatDate(value),
-  },
-  {
-    key: "saleBranch",
-    label: "Sales Branch",
-  },
-  {
-    key: "chassisNumber",
-    label: "Chassis Number",
-  },
-  {
-    key: "registrationNumber",
-    label: "Registration Number",
-  },
-  {
-    key: "modelGroup",
-    label: "Model Group",
-  },
-  {
-    key: "customerName",
-    label: "Customer Name",
-  },
-  {
-    key: "pinCode",
-    label: "PIN Code",
-  },
-  {
-    key: "city",
-    label: "City",
-  },
-  {
-    key: "tehsil",
-    label: "Tehsil",
-  },
-  {
-    key: "district",
-    label: "District",
-  },
-  {
-    key: "financier",
-    label: "Financier",
-  },
-  {
-    key: "segment",
-    label: "Segment",
-  },
-  {
-    key: "mobileNo",
-    label: "Mobile Number",
-  },
-];
+  const columns = [
+    {
+      key: "deliveryDate",
+      label: "Delivery Date",
+      render: (value) => formatDate(value),
+    },
+    {
+      key: "saleBranch",
+      label: "Sales Branch",
+    },
+    {
+      key: "chassisNumber",
+      label: "Chassis Number",
+    },
+    {
+      key: "registrationNumber",
+      label: "Registration Number",
+    },
+    {
+      key: "modelGroup",
+      label: "Model Group",
+    },
+    {
+      key: "customerName",
+      label: "Customer Name",
+    },
+    {
+      key: "pinCode",
+      label: "PIN Code",
+    },
+    {
+      key: "city",
+      label: "City",
+    },
+    {
+      key: "tehsil",
+      label: "Tehsil",
+    },
+    {
+      key: "district",
+      label: "District",
+    },
+    {
+      key: "financier",
+      label: "Financier",
+    },
+    {
+      key: "segment",
+      label: "Segment",
+    },
+    {
+      key: "mobileNo",
+      label: "Mobile Number",
+    },
+  ];
 
   return (
     <div className="ret-sales-page">
